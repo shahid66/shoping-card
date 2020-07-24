@@ -25,17 +25,17 @@
 
                      <div class="col-md-5 center-item">
                         <div class="input-group number-spinner">
-                           <button class="btn btn-default"><i class="fas fa-minus"></i></button>
-                           <input type="text" class="form-control text-center" value="1">
-                           <button class="btn btn-default"><i class="fas fa-plus"></i></button>
+                           <button id="minusProduct" class="btn btn-default"><i class="fas fa-minus"></i></button>
+                           <input id="inputValue" type="text" class="form-control text-center" value="1">
+                           <button id="plusProduct" class="btn btn-default"><i class="fas fa-plus"></i></button>
                         </div>
-                        <h5>$1219</h5>
+                        <h5>$ <span id="priceSpan">1250</span> </h5>
                         <img src="images/remove.png" alt="" class="remove-item">
                      </div>
                   </div>
                </div>
 
-               <div class="cart-item">
+               <!-- <div class="cart-item">
                   <div class="row">
                      <div class="col-md-7 center-item mx-auto">
                         <img src="images/product-2.png" alt="">
@@ -43,16 +43,16 @@
                      </div>
                      <div class="col-md-5 center-item">
                         <div class="input-group number-spinner">
-                           <button class="btn btn-default"><i class="fas fa-minus"></i></button>
-                           <input type="text" class="form-control text-center" value="1">
-                           <button class="btn btn-default"><i class="fas fa-plus"></i></button>
+                           <button id="minusProduct" class="btn btn-default"><i class="fas fa-minus"></i></button>
+                           <input id="inputValue" type="text" class="form-control text-center" value="1">
+                           <button id="plusProduct" class="btn btn-default"><i class="fas fa-plus"></i></button>
 
                         </div>
-                        <h5>$59</h5>
+                        <h5>$<span id="priceSpan">12</span></h5>
                         <img src="images/remove.png" alt="" class="remove-item">
                      </div>
                   </div>
-               </div>
+               </div> -->
 
                <div class="cart-item">
                   <div class="row">
@@ -78,8 +78,34 @@
       </div>
    </section>
 
-
+<script>
+document.getElementById('plusProduct').addEventListener('click',function(){
+   handleProductChange(true);
    
+})
+
+document.getElementById('minusProduct').addEventListener('click',function(){
+
+   handleProductChange(false);
+   
+})
+function handleProductChange(isIncrease){
+   const inputValue=document.getElementById('inputValue');
+   const caseCount =parseInt(inputValue.value);
+   let caseNewCount=caseCount;
+   if(isIncrease == true){
+      caseNewCount = caseCount+1;
+   }
+   if(isIncrease == false){
+      caseNewCount = caseCount-1;
+   }
+   inputValue.value=caseNewCount;
+   const caseTotal =caseNewCount*1250;
+   document.getElementById('priceSpan').innerText=caseTotal;
+}
+
+</script>
+
 </body>
 
 </html>
